@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container-fluid::before{
+            background:url('galaxy.jpg') no-repeat center center/cover;
+            content: "";
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1s; 
+           
+        }
+        .opacity-active::before{
+            opacity: 1;
+        }
+        .sun{
+            background-image: linear-gradient(black,white);
+        }
+        .sun-top{
+            width: 200px;
+            height: 100px;
+            /* background-image: linear-gradient(red,orangered,orange,rgb(243, 195, 23)); */
+            border-radius: 100px 100px 0% 0%;
+            position: absolute;
+            top:25%;
+            left: 45%;
+            z-index: 4;
+        }
+        .sun-bottom{
+            width: 200px;
+            height: 100px;
+            /* background-image: linear-gradient(rgb(243, 195, 23),yellow,white); */
+            border-radius: 0px 0px 100px 100px;
+            position: absolute;
+            top:41%;
+            left: 45%;
+        }
+        .orbit{
+            position: absolute;
+            border-radius: 100%;
+            
+
+        }
+        #orbit-1{
+            
+            top:40.5%;
+            left: 49%;
+            width:100px;
+            height: 20px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4); 
+               
+            
+        }
+        #orbit-2{
+            top: 41%;
+            left: 47%;
+            width:135px;
+            height: 23px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4) ;
+            z-index: 2;    
+        }
+        #orbit-3{
+            top:41.5%;
+            left: 45%;
+            width:190px;
+            height: 25px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4);    
+        }
+        #orbit-4{
+            top:42%;
+            left: 44%;
+            width: 240px;
+            height: 28px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4);    
+        }
+        #orbit-5{
+            top:43%;
+            left: 40%;
+            width: 290px;
+            height: 31px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4);   
+            z-index: 5; 
+        }
+        #orbit-6{
+            top:44%;
+            left: 38%;
+            width: 340px;
+            height: 39px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4);  
+            z-index: 6;  
+        }
+        #orbit-7{
+            top:46%;
+            left: 38%;
+            width: 380px;
+            height: 45px;
+            border-bottom: 1px solid grey;
+            border-left: 5px solid grey;
+            border-right: 5px solid grey;
+            transform: scale(4);    
+        }
+      
+       
+        .mercury{
+            width:70px;
+            height: 70px;
+            border-radius: 100%;
+            background-image: linear-gradient(grey,white);
+            position: absolute;
+            transform: perspective(1000);
+            top:30%;
+            left:57%;
+        }
+        .venus{
+            width:50px;
+            height: 50px;
+            border-radius: 100%;
+            background-image: linear-gradient(rgb(241, 173, 0),white);
+            position: absolute;
+            transform: perspective(1000);
+            top:38%;
+            left:72%;
+            z-index: 3;
+        }
+        .earth{
+            width:90px;
+            height: 90px;
+            border-radius: 100%;
+            background-image: linear-gradient(green,rgb(10, 171, 246),rgb(142, 225, 155),rgb(10, 171, 246));
+            position: absolute;
+            transform: perspective(1000);
+            top:31%;
+            left:26%;
+        }
+        .mars{
+            width:60px;
+            height: 60px;
+            border-radius: 100%;
+            background-image: linear-gradient( white,rgb(246, 10, 10));
+            position: absolute;
+            transform: perspective(1000);
+            top:45%;
+            left:45%;
+            z-index: 4;
+            
+        }
+        .jupiter{
+            width:120px;
+            height: 120px;
+            border-radius: 100%;
+            background-image: linear-gradient(rgb(255, 220, 21), rgb(225, 205, 176),rgb(165, 110, 56), rgb(173, 140, 140),rgb(197, 187, 129));
+            position: absolute;
+            transform: perspective(1000);
+            top:42%;
+            left:20%;
+            z-index: 5;
+            
+        }
+        .saturn{
+            width:60px;
+            height: 60px;
+            border-radius: 100%;
+            background-image: linear-gradient(brown,rgb(234, 234, 162),rgb(233, 173, 173));
+            position: absolute;
+            transform: perspective(1000);
+            top:50%;
+            left:90%;
+            z-index: 7;
+            
+        }
+        #sat-orbit{
+            width: 90px;
+            height: 40px;
+            transform: rotate(30deg);
+            border-bottom: 4px solid grey;
+            border-left: 15px solid grey;
+            border-right: 15px solid grey;
+            top:51%;
+            left: 88%;
+            z-index: 8;  
+        }
+        .planet{
+            background-image: linear-gradient(black,white);
+        }
+        button{
+            position: absolute;
+            top:80%;
+            background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+            width: 100px;
+            height: 50px; 
+            border:none;
+            color: white;
+            border-radius: 10%;
+            
+        }
+        /* button:hover{
+            transition: transform 1s;
+            transform: scale(2) rotateX(20deg);
+            background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+            width: 100px;
+            height: 50px; 
+            border:none;
+            color: white;
+            border-radius: 10%;   
+        } */
+        .buttons{
+            display: flex;
+            justify-content: center;
+        
+        }
+        </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="sun sun-top"></div>
+        <div class="sun sun-bottom"></div>
+        <div class="orbit" id="orbit-1"></div>
+        <div class="orbit" id="orbit-2"></div>
+        <div class="orbit" id="orbit-3"></div>
+        <div class="orbit" id="orbit-4"></div>
+        <div class="orbit" id="orbit-5"></div>
+        <div class="orbit" id="orbit-6"></div>
+        <div class="orbit" id="orbit-7"></div>
+        <div class="orbit" id="sat-orbit"></div>
+        <div class="planet mercury"></div>
+        <div class="planet venus"></div>
+        <div class="planet earth"></div>
+        <div class="planet mars"></div>
+        <div class="planet jupiter"></div>
+        <div class="planet saturn"></div>
+    </div>
+    <div class="buttons">
+        <button onclick="change()" id="btn">With YOU</button>
+    </div>
+    <script>
+        var toggle = false;
+        function change(){
+            var planets =  document.querySelectorAll(".planet");
+            var suntop=  document.querySelector(".sun-top");
+            var sun =  document.querySelector(".sun");
+            var sunbottom =  document.querySelector(".sun-bottom");
+            var saturn = document.querySelector(".saturn");
+            var earth = document.querySelector(".earth");
+            var mercury = document.querySelector(".mercury");
+            var venus = document.querySelector(".venus");
+            var mars = document.querySelector(".mars");
+            var jupiter = document.querySelector(".jupiter");
+            var container = document.querySelector(".container-fluid");
+            var btn = document.getElementById("btn");
+            if (toggle == false) {
+                container.classList.add("opacity-active");
+                for(var i =0;i<planets.length;i++){
+                    planets[i].style.backgroundImage = 'none';
+                }
+                sun.style.backgroundImage = 'none';
+                suntop.style.backgroundImage = "linear-gradient(red,orangered,orange,rgb(243, 195, 23))";
+                sunbottom.style.backgroundImage = "linear-gradient(rgb(243, 195, 23),yellow,white)";
+                earth.style.backgroundImage = "linear-gradient(green,rgb(10, 171, 246),rgb(142, 225, 155),rgb(10, 171, 246))";
+                saturn.style.backgroundImage = "linear-gradient(brown,rgb(234, 234, 162),rgb(233, 173, 173))";
+                mars.style.backgroundImage ="linear-gradient( white,rgb(246, 10, 10))";
+                venus.style.backgroundImage = "linear-gradient(rgb(241, 173, 0),white)";
+                jupiter.style.backgroundImage ="linear-gradient(rgb(255, 220, 21), rgb(225, 205, 176),rgb(165, 110, 56), rgb(173, 140, 140),rgb(197, 187, 129))";
+                mercury.style.backgroundImage ="linear-gradient(grey,white)";
+                btn.textContent = "Without You";
+                
+            } else {
+                container.classList.remove("opacity-active");
+                for(var i =0;i<planets.length;i++){
+                    planets[i].style.backgroundImage = "linear-gradient(black,white)";
+                }
+                sun.style.backgroundImage = "linear-gradient(black,white)";
+                sunbottom.style.backgroundImage = "linear-gradient(black,white)";
+                 
+                btn.textContent = "With You";
+            }
+            toggle = !toggle;
+
+        }
+    </script>
+    
+</body>
+</html>
